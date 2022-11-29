@@ -18,6 +18,7 @@ namespace Linq_Examples
       NestedTakePartitions();
       TakeWhile();
       CompareTwoSequencesForEquality();
+      CompareSequencesWithZip();
     }
     public static void FilterElementBasedOnPosition()
     {
@@ -126,6 +127,14 @@ namespace Linq_Examples
       bool IsMatch = wordsA.SequenceEqual(wordsB);
       Console.WriteLine($"The Sequences Match : {IsMatch}");
 
+    }
+    public static void CompareSequencesWithZip()
+    {
+      int[] vectorA = { 0, 2, 4, 6 };
+      int[] vectorB = { 1, 3, 5, 7 };
+
+      int dotProduct = vectorA.Zip(vectorB ,(a,b)=>a*b).Sum();
+      Console.WriteLine($"Dot Product:{dotProduct}");
     }
 
   }
