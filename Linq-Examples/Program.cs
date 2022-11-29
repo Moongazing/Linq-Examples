@@ -17,6 +17,7 @@ namespace Linq_Examples
       TakeElement();
       NestedTakePartitions();
       TakeWhile();
+      CompareTwoSequencesForEquality();
     }
     public static void FilterElementBasedOnPosition()
     {
@@ -116,6 +117,15 @@ namespace Linq_Examples
       {
         Console.WriteLine(num);
       }
+    }
+    public static void CompareTwoSequencesForEquality()
+    {
+      var wordsA = new string[] { "cheery", "apple", "blueberry" };
+      var wordsB = new string[] { "cheery", "apple", "blueberry" };
+
+      bool IsMatch = wordsA.SequenceEqual(wordsB);
+      Console.WriteLine($"The Sequences Match : {IsMatch}");
+
     }
 
   }
