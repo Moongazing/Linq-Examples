@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Linq_Examples
@@ -14,6 +15,17 @@ namespace Linq_Examples
      
 
 
+
+    }
+    public static void FilterElementBasedOnPosition()
+    {
+      string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+      var shortDigits = digits.Where((digit, index) => digits.Length < index);
+      Console.WriteLine("Short Digits:");
+      foreach (var d in shortDigits)
+      {
+        Console.WriteLine($"The word {d} is shorter than value.");
+      }
 
     }
     public static void FilterElementsOnMultipleProperties()
