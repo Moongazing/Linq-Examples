@@ -14,6 +14,9 @@ namespace Linq_Examples
       FilterElementsOnMultipleProperties();
       FilterElementBasedOnPosition();
       TransformWithSelect();
+      TakeElement();
+      NestedTakePartitions();
+      TakeWhile();
     }
     public static void FilterElementBasedOnPosition()
     {
@@ -67,16 +70,52 @@ namespace Linq_Examples
     }
     public static void TransformWithSelect()
     {
-      int[] numbers = { 1, 2, 3, 4, 5, };
+      int[] numbers = { 3, 2, 1, 5, 4, };
       string[] strings = { "one", "two", "three", "four", "five" };
       var textNums = from n in numbers
                      select strings[n];
       Console.WriteLine("Number strings:");
       foreach (var s in textNums)
       {
-        Console.WriteLine(s);  
+        Console.WriteLine(s);
       }
 
+    }
+    public static void TakeElement()
+    {
+      int[] numbers = { 2, 3, 4, 6, 7, 5, 0, 8, 9, 1 };
+      var first_ThreeNumber = numbers.Take(3);
+      Console.WriteLine("First 3 Numbers:");
+      foreach (var n in first_ThreeNumber)
+      {
+        Console.WriteLine(n);
+      }
+
+    }
+    public static void NestedTakePartitions()
+    {
+      List<Customer> customers = GetCustomerList();
+      var first3WAOrders = (
+        from c in customers
+        from o in c.Orders
+        where c.Region == "WA"
+        select (c.CustomerId, o.OrderId, o.OrderDate)).Take(3);
+
+      Console.WriteLine("First 3 orders in WA");
+      foreach (var order in first3WAOrders)
+      {
+        Console.WriteLine(order);
+      }
+    }
+    public static void TakeWhile()
+    {
+      int[] numbers = { 5, 6, 7, 2, 3, 4, 1, 0 };
+      var firstNumbersLessThanSix = numbers.TakeWhile(n => n < 6);
+      Console.WriteLine("First Numbers Less Than Six");
+      foreach (var num in firstNumbersLessThanSix)
+      {
+        Console.WriteLine(num);
+      }
     }
 
   }
