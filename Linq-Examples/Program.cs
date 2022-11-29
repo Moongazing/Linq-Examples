@@ -12,10 +12,8 @@ namespace Linq_Examples
       LessThanFive();
       FilterElementsOnProperty();
       FilterElementsOnMultipleProperties();
-     
-
-
-
+      FilterElementBasedOnPosition();
+      TransformWithSelect();
     }
     public static void FilterElementBasedOnPosition()
     {
@@ -66,6 +64,19 @@ namespace Linq_Examples
       {
         Console.WriteLine(x);
       }
+    }
+    public static void TransformWithSelect()
+    {
+      int[] numbers = { 1, 2, 3, 4, 5, };
+      string[] strings = { "one", "two", "three", "four", "five" };
+      var textNums = from n in numbers
+                     select strings[n];
+      Console.WriteLine("Number strings:");
+      foreach (var s in textNums)
+      {
+        Console.WriteLine(s);  
+      }
+
     }
 
   }
