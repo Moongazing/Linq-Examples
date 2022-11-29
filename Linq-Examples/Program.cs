@@ -9,10 +9,37 @@ namespace Linq_Examples
     public static void Main(string[] args)
     {
       LessThanFive();
+      FilterElementsOnProperty();
+      FilterElementsOnMultipleProperties();
      
 
 
 
+    }
+    public static void FilterElementsOnMultipleProperties()
+    {
+      List<Product> products = GetProductList();
+      var result = from product in products
+                   where product.UnitsInStock == 0 && product.UnitPrice > 20
+                   select product;
+      Console.WriteLine("Sold out and bigger than 20 :");
+      foreach (var prod in products)
+      {
+        Console.WriteLine(prod.ProductName);
+      }
+    }
+    public static void FilterElementsOnProperty()
+    {
+      List<Product> products = GetProductList();
+      var soldOut = from product in products
+                    where product.UnitsInStock == 0
+                    select product;
+
+      Console.WriteLine("Sold Out Products :");
+      foreach (var prod in products)
+      {
+        Console.WriteLine($"{prod.ProductName} is sold out.");
+      }
     }
     public static void LessThanFive()
     {
